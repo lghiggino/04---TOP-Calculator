@@ -1,4 +1,5 @@
 console.log("calma e paciencia. Teste hipóteses. Erros são oportunidades de crescimento")
+console.log("hello")
 
 const previousOperandText = document.querySelector(".previous-OP");
 const currentOperandText = document.querySelector(".current-OP");
@@ -28,6 +29,7 @@ numberButtons.forEach(button => {
 
 operationButtons.forEach(button =>{
     button.addEventListener("click", (e) =>{
+        //se já tiver operador selecionado, ao clicar em novo operador, calcular o valor do que está disponível, e guardar no historicValue.
         operador = e.target.id
         historicValue = input
         currentValue = ""
