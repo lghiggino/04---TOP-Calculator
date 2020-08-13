@@ -6,6 +6,7 @@ const currentOperandText = document.querySelector(".current-OP");
 
 const numberButtons = document.querySelectorAll(".number");
 const operationButtons = document.querySelectorAll(".operation");
+const decimalButton = document.querySelector(".decimal")
 const allClear = document.querySelector(".all-clear");
 const clearOne  = document.querySelector(".clear");
 const equal = document.querySelector(".equal");
@@ -16,12 +17,10 @@ let currentValue = "";
 let operador = "";
 
 
+
 numberButtons.forEach(button => {
     button.addEventListener("click", (e) =>{
         input += e.target.id;
-        if (currentValue.includes(".") && e.target.id === "."){
-            return // não está desabiltinado o botão, mas escondendo os pontos multiplos
-        }
         currentValue = input;
         updateDisplay()
     })
@@ -48,6 +47,7 @@ operationButtons.forEach(button =>{
 allClear.addEventListener("click", clearAll);
 clearOne.addEventListener("click", deleteOne)
 equal.addEventListener("click", calculate)
+decimalButton.addEventListener("click", addDot);
 
 //functions
 function updateDisplay (){
@@ -64,7 +64,7 @@ function clearAll(){
 }
 
 function deleteOne(){
-    input = input.slice(0, input.length-1) // não funciona!!!
+    input = input.slice(0, input.length-1) 
     currentValue = input;
     updateDisplay()
 }
@@ -121,11 +121,16 @@ function calculate(){
             operador = "";
             updateDisplay()
         break;
-        
-
-
     }
 }
 
+function addDot(e){
+    console.log(e.target.id);
+    if (input.includes(".") && e.target.id === "."){
+        return // não está desabiltinado o botão, mas escondendo os pontos multiplos
+    }else{
+        input += e.target.id;
+        }
+}
 
 
