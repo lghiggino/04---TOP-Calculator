@@ -1,5 +1,4 @@
-console.log("calma e paciencia. Teste hipóteses. Erros são oportunidades de crescimento")
-console.log("hello")
+console.log("calma e paciencia. Teste hipóteses. Erros são oportunidades de crescimento");
 
 // Buttons
 const previousOperandText = document.querySelector(".previous-OP");
@@ -44,9 +43,7 @@ operationButtons.forEach(button =>{
             case operador === "+" && input == "":
             case operador === "-" && input == "":
             case operador === "%" && input == "":
-                alert("Error. Please clear the calculator pressing AC")
-                //TENHO QUE PENSAR AQUI
-                break;
+                return;
         }
         operador = e.target.id;
         historicValue = input;
@@ -64,8 +61,8 @@ signButton.addEventListener("click", addMinus);
 
 // Functions
 function updateDisplay (){
-    previousOperandText.textContent = `${historicValue} ${operador}`;
-    currentOperandText.textContent = `${currentValue}`;
+    previousOperandText.textContent = `${historicValue} ${operador} `;
+    currentOperandText.textContent = ` ${currentValue}`;
 }
 
 function clearAll(){
@@ -77,9 +74,9 @@ function clearAll(){
 }
 
 function deleteOne(){
-    input = input.slice(0, input.length-1) 
+    input = input.slice(0, input.length-1);
     currentValue = input;
-    updateDisplay()
+    updateDisplay();
 }
 
 function calculate(){
@@ -92,7 +89,7 @@ function calculate(){
             input = historicValue;
             currentValue = "";
             operador = "";
-            updateDisplay()
+            updateDisplay();
         break;
 
         case "-":
@@ -100,7 +97,7 @@ function calculate(){
             input = historicValue;
             currentValue = "";
             operador = "";
-            updateDisplay()
+            updateDisplay();
         break;
 
         case "*":
@@ -108,23 +105,23 @@ function calculate(){
             input = historicValue;
             currentValue = "";
             operador = "";
-            updateDisplay()
+            updateDisplay();
         break;
 
         case "/":
             if (beta == 0){
-                historicValue = "uh! Thats infinity. Press AC"
+                historicValue = "uh! Thats infinity!";
                 input = 0;
                 currentValue = "";
                 operador = "";
-                updateDisplay
+                updateDisplay();
             }else {
             historicValue = (alpha / beta);
             input = historicValue;
             currentValue = "";
             operador = "";
             }
-            updateDisplay()
+            updateDisplay();
         break;
 
         case "%":
@@ -132,14 +129,14 @@ function calculate(){
             input = historicValue;
             currentValue = "";
             operador = "";
-            updateDisplay()
+            updateDisplay();
         break;
     }
 }
 
 function addDot(){
     if (input.includes(".")){ 
-        return 
+        return;
     }else{
         input += ".";
         currentValue = input;
@@ -153,7 +150,7 @@ function addMinus(){
         currentValue = input;
         updateDisplay();
     } else{
-        input = "-"+input
+        input = "-"+input;
         currentValue = input;
         updateDisplay();
         }
