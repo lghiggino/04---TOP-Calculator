@@ -6,7 +6,8 @@ const currentOperandText = document.querySelector(".current-OP");
 
 const numberButtons = document.querySelectorAll(".number");
 const operationButtons = document.querySelectorAll(".operation");
-const decimalButton = document.querySelector(".decimal")
+const decimalButton = document.querySelector(".decimal");
+const signButton = document.querySelector(".sign");
 const allClear = document.querySelector(".all-clear");
 const clearOne  = document.querySelector(".clear");
 const equal = document.querySelector(".equal");
@@ -48,6 +49,8 @@ allClear.addEventListener("click", clearAll);
 clearOne.addEventListener("click", deleteOne)
 equal.addEventListener("click", calculate)
 decimalButton.addEventListener("click", addDot);
+signButton.addEventListener("click", addMinus);
+signButton.addEventListener("mouseover")
 
 //functions
 function updateDisplay (){
@@ -124,13 +127,22 @@ function calculate(){
     }
 }
 
-function addDot(e){
-    console.log(e.target.id);
-    if (input.includes(".") && e.target.id === "."){
-        return // não está desabiltinado o botão, mas escondendo os pontos multiplos
+function addDot(){
+    if (input.includes(".")){ 
+        return 
     }else{
-        input += e.target.id;
+        input += ".";
         }
 }
 
+function addMinus(){
+    if(input.includes("-")){
+        input = input.slice(1);
+        updateDisplay();
+    } else{
+        input = "-"+input
+        currentValue = input;
+        updateDisplay();
+        }
+}
 
