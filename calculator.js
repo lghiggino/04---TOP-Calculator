@@ -1,9 +1,9 @@
 console.log("calma e paciencia. Teste hipóteses. Erros são oportunidades de crescimento")
 console.log("hello")
 
+// Buttons
 const previousOperandText = document.querySelector(".previous-OP");
 const currentOperandText = document.querySelector(".current-OP");
-
 const numberButtons = document.querySelectorAll(".number");
 const operationButtons = document.querySelectorAll(".operation");
 const decimalButton = document.querySelector(".decimal");
@@ -12,13 +12,14 @@ const allClear = document.querySelector(".all-clear");
 const clearOne  = document.querySelector(".clear");
 const equal = document.querySelector(".equal");
 
+// Variables
 let input = "";
 let historicValue = "";
 let currentValue = "";
 let operador = "";
 
 
-
+// Event Listeners
 numberButtons.forEach(button => {
     button.addEventListener("click", (e) =>{
         input += e.target.id;
@@ -30,32 +31,41 @@ numberButtons.forEach(button => {
 operationButtons.forEach(button =>{
     button.addEventListener("click", (e) =>{
         switch(true){
-            case operador === "*":
-            case operador === "/":
-            case operador === "+":
-            case operador === "-":
-            case operador === "%":
+            case operador === "*" && input !== "":
+            case operador === "/" && input !== "":
+            case operador === "+" && input !== "":
+            case operador === "-" && input !== "":
+            case operador === "%" && input !== "":
                 calculate();
                 break;
+
+            case operador === "*" && input == "":
+            case operador === "/" && input == "":
+            case operador === "+" && input == "":
+            case operador === "-" && input == "":
+            case operador === "%" && input == "":
+                alert("Error. Please clear the calculator pressing AC")
+                //TENHO QUE PENSAR AQUI
+                break;
         }
-        operador = e.target.id
-        historicValue = input
-        currentValue = ""
-        input = ""
+        operador = e.target.id;
+        historicValue = input;
+        currentValue = "";
+        input = "";
     })
 })
 
 allClear.addEventListener("click", clearAll);
-clearOne.addEventListener("click", deleteOne)
-equal.addEventListener("click", calculate)
+clearOne.addEventListener("click", deleteOne);
+equal.addEventListener("click", calculate);
 decimalButton.addEventListener("click", addDot);
 signButton.addEventListener("click", addMinus);
-signButton.addEventListener("mouseover")
 
-//functions
+
+// Functions
 function updateDisplay (){
-    previousOperandText.textContent = `${historicValue} ${operador}`
-    currentOperandText.textContent = `${currentValue}`
+    previousOperandText.textContent = `${historicValue} ${operador}`;
+    currentOperandText.textContent = `${currentValue}`;
 }
 
 function clearAll(){
@@ -75,7 +85,7 @@ function deleteOne(){
 function calculate(){
     let alpha = parseFloat(historicValue);
     let beta = parseFloat(currentValue);
-    console.log(alpha,beta)
+    console.log(`historicValue é ${alpha}, currentValue é ${beta}, operador é ${operador}`);
     switch(operador){
         case "+":
             historicValue = (alpha + beta);
@@ -103,7 +113,7 @@ function calculate(){
 
         case "/":
             if (beta == 0){
-                historicValue = "uh! Thats infity for you."
+                historicValue = "uh! Thats infinity. Press AC"
                 input = 0;
                 currentValue = "";
                 operador = "";
@@ -132,12 +142,15 @@ function addDot(){
         return 
     }else{
         input += ".";
+        currentValue = input;
+        updateDisplay();
         }
 }
 
 function addMinus(){
     if(input.includes("-")){
         input = input.slice(1);
+        currentValue = input;
         updateDisplay();
     } else{
         input = "-"+input
