@@ -29,7 +29,15 @@ numberButtons.forEach(button => {
 
 operationButtons.forEach(button =>{
     button.addEventListener("click", (e) =>{
-        //se já tiver operador selecionado, ao clicar em novo operador, calcular o valor do que está disponível, e guardar no historicValue.
+        switch(true){
+            case operador === "*":
+            case operador === "/":
+            case operador === "+":
+            case operador === "-":
+            case operador === "%":
+                calculate();
+                break;
+        }
         operador = e.target.id
         historicValue = input
         currentValue = ""
@@ -61,8 +69,7 @@ function deleteOne(){
     updateDisplay()
 }
 
-function calculate(e){
-    console.log(e.target.id)
+function calculate(){
     let alpha = parseFloat(historicValue);
     let beta = parseFloat(currentValue);
     console.log(alpha,beta)
@@ -92,10 +99,18 @@ function calculate(e){
         break;
 
         case "/":
+            if (beta == 0){
+                historicValue = "uh! Thats infity for you."
+                input = 0;
+                currentValue = "";
+                operador = "";
+                updateDisplay
+            }else {
             historicValue = (alpha / beta);
             input = historicValue;
             currentValue = "";
             operador = "";
+            }
             updateDisplay()
         break;
 
