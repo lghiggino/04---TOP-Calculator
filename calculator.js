@@ -1,4 +1,4 @@
-console.log("calma e paciencia. Teste hipóteses. Erros são oportunidades de crescimento");
+console.log("calma e paciencia. Teste hipóteses. Erros são oportunidades de crescimento")
 
 // Buttons
 const previousOperandText = document.querySelector(".previous-OP");
@@ -82,7 +82,7 @@ function deleteOne(){
 function calculate(){
     let alpha = parseFloat(historicValue);
     let beta = parseFloat(currentValue);
-    console.log(`historicValue é ${alpha}, currentValue é ${beta}, operador é ${operador}`);
+    //console.log(`historicValue é ${alpha}, currentValue é ${beta}, operador é ${operador}`);
     switch(operador){
         case "+":
             historicValue = (alpha + beta);
