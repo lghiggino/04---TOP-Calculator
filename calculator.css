@@ -1,7 +1,7 @@
 body{
     background: black;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 900;
+    font-family: 'Montserrat', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 1000;
     color: rgb(27, 27, 27);
 }
 
@@ -25,6 +25,7 @@ body{
 
 #calculator{
     background-color: white;
+    border-radius: 10px;
     max-width: 30vw;
     min-width: 350px;
     margin: auto;
@@ -33,6 +34,7 @@ body{
 
 #display{
     background-color: rgba(0,0,0,0.75);
+    border-radius: 5px;
     color: white;
     display: flex;
     align-items: flex-end;
@@ -55,7 +57,6 @@ body{
     color: white;
     font-size: 2.5em;
 }
-}
 
 .show{
     font-size: 3em;
@@ -66,8 +67,6 @@ body{
 .pad{
     background-color: white;
     border-style: solid;
-    border-width: -5px;
-    border-color: violet;
     column-gap: 0.3em;
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -87,11 +86,12 @@ body{
     line-height: 3em;
     border-radius: 13px;
     background: #55b9f3;
+    color: white;
     width:90%;
-    
 }
 
 .doubleBtn{
+    color: white;
     justify-self: stretch;
     grid-column: 3/span 2;
     text-align: center;
@@ -99,6 +99,14 @@ body{
     border-radius: 13px;
     background: linear-gradient(145deg, #8b1fab, #a524cb);
     width: 95%
+}
+
+.operation, .sign{
+    background-color: #559ff3;
+}
+
+.clear, .all-clear{
+    background-color: #a524cb
     
 }
 
