@@ -1,4 +1,5 @@
 console.log("calma e paciencia. Teste hipóteses. Erros são oportunidades de crescimento")
+console.log("can you see the groovy effect between the buttons?")
 
 // Buttons
 const previousOperandText = document.querySelector(".previous-OP");
